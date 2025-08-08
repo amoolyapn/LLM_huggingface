@@ -37,3 +37,18 @@ classifier("Rohan had an accident")
 
 #output
 #[{'label': 'NEGATIVE', 'score': 0.9947031140327454}]
+
+
+#Zero-shot classification
+from transformers import pipeline
+
+classifier = pipeline("zero-shot-classification")
+classifier(
+    "This is a course about the Transformers library",
+    candidate_labels=["education", "politics", "business"],
+)
+
+#output
+#{'sequence': 'This is a course about the Transformers library',
+ #'labels': ['education', 'business', 'politics'],
+ #'scores': [0.8445963859558105, 0.111976258456707, 0.043427448719739914]}
