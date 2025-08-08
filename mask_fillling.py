@@ -27,11 +27,17 @@ for res in result:
 #nice — Score: 0.0614
 #cool — Score: 0.0550
 
-#BERT usecase
+# Using [MASK] with BERT
 from transformers import pipeline
-
-# BERT uses [MASK]
 fill_mask = pipeline("fill-mask", model="bert-base-uncased")
-result = fill_mask("I love eating [MASK] for breakfast.",top_k=2)
+result = fill_mask("I love eating [MASK] for breakfast.")
+result
 
+
+
+#Using <mask> with RoBERTa
+from transformers import pipeline
+fill_mask = pipeline("fill-mask", model="roberta-base")
+result = fill_mask("I love eating <mask> for breakfast.",top_k=2)
+result
 
